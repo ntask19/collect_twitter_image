@@ -2,3 +2,4 @@ vendor/
 .idea/
 downloaded/*
 !downloaded/.gitkeep
+.env
