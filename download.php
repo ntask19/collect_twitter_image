@@ -31,7 +31,7 @@ class DownloadTwitter {
                     $data = file_get_contents($val2['media_url_https']); //画像URLからデータを取得
                     $timestamp = strtotime($val1['created_at']); //投稿日時
                     $file_name = $this->file_pass.date('Ymd-His', $timestamp).'_'.($key2 + 1).'_'.$val1['user']['name'].'.jpg'; //ファイル名
-                    echo $file_name;
+                    echo $file_name.PHP_EOL;
                     file_put_contents($file_name, $data); //ファイルを保存
                     sleep(3); //負荷軽減のため間隔を置く
                 }
@@ -49,8 +49,6 @@ class DownloadTwitter {
             'result_type' => 'mixed',
             'count' => 100,
             "q" => $word,]);
-
-        var_dump($params);
 
         $res = $this->twitter->get("search/tweets", $params);
         $tweets = json_decode(json_encode($res), true);
